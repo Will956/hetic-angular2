@@ -13,7 +13,12 @@
 <p>Friends : {{player1FriendsTotal}}</p>
 <p>Games : {{player1GamesTotal}}</p>
 <p *ngFor="#game of player1Games">{{game.name}}</p>
-
+<hr>
+<p>Same Games</p>
+<ul>
+	<li *ngFor="#game of sameGames">{{game.name}}</li>
+</ul>
+<hr>
 <p>Player 2</p>
 <p *ngFor="#player of player2">{{player.personaname}}</p>
 <p>Friends : {{player2FriendsTotal}}</p>
