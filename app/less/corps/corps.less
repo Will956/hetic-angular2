@@ -1,0 +1,100 @@
+#corps {
+	height:768px;
+	width:100%;
+	background: url('../img/fond-mobile.png') no-repeat;
+	background-position: 0% 20%;
+	background-size: 100;
+	background-attachment: fixed;
+	
+	color:white;
+	text-align: center;
+	.font-size(2rem);
+
+	@media @small {
+		background-position: center;
+	}
+
+	@media @medium {
+		background: url('../img/fond.png') no-repeat;
+	background-position: center;
+	}
+
+
+	#faq{
+		width:90%;
+		margin: auto;
+		.font-size(1.25rem);
+		display: none;
+		text-align: center;
+		@media @medium{
+			padding-top:80px;
+			display: block;
+		}
+	}
+
+	form {
+		padding-top:60px;
+
+		@media @medium {
+		  .display(flex);
+	 	  .justify-content(space-around);
+	 	  width:90%;
+	 	  margin:auto;
+	
+
+		}
+
+		p:nth-child(2){
+			margin-bottom:30px;
+		}
+
+		input {
+			margin:30px auto;
+			width:80%;
+			height: 40px;
+			.font-size(0.9375rem);
+			border-style: none;
+			@media @medium {
+				width:100%;
+			}
+
+			@media @large {
+				width:60%;
+			}
+		}
+
+		div {
+		   @media @medium {
+		   	width:30%;
+
+		   }		
+		}
+
+		div:nth-child(1), div:nth-child(3){
+			flex:2;
+		}
+
+	}
+
+	#button{
+ 		cursor:pointer;
+ 		width:50%;
+ 		color:#67c1f5 ;
+ 		margin: auto;
+ 		line-height: 50px;
+ 		height:50px;
+ 		border-radius: 2px;
+ 		margin-top:30px;
+ 		background:rgba( 103, 193, 245, 0.2 );
+ 		.font-size(1.25rem);
+
+ 		&:hover{
+ 			background:#64bcef;
+ 			color:white;
+ 		}
+
+ 		@media @medium {
+ 			width:2 0%;
+ 		}
+	}
+}

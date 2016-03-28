@@ -1,0 +1,103 @@
+.container-amis{  
+    width:90%;
+    margin:auto;
+
+    .titre {
+        display: flex;
+        margin-top:60px;
+        .font-size(1.75rem);
+        color:white;
+        p {
+            line-height: 58px;
+            margin-left:30px;
+        }
+        img {
+            .size(58px);
+            float:left;
+
+        }
+    }
+
+    .trait {
+        margin-top:15px;
+        margin-bottom: 15px;
+        width:100%;
+        height:2px;
+        background-color: #407a9c;
+    }
+
+    .container-resultat {
+      .display(flex);
+      .justify-content(space-around);
+      color:white;
+      .font-size(1.5rem);
+      margin-top:10px;
+
+        .container-gauche, .container-milieu, .container-droite{
+            width:30%;
+            height:60px;
+
+            div:nth-child(2) {
+                margin-top:15px;
+            }
+        }
+
+ 
+        .container-milieu{
+            border-left: 2px solid #407a9c;
+            border-right: 2px solid #407a9c;
+            text-align: center;
+            line-height: 101px;
+        }
+
+        .container-droite {
+            text-align:right;
+        }
+    }
+
+    .container-resultat-nav {
+      .display(flex);
+      .justify-content(space-around);
+        margin-top:15px;
+
+        .container-gauche, .container-droite {
+            width:34%;
+            height:10px;
+            border-radius: 10px;
+            background-color: #d6d6d6;
+            opacity:0.3;
+        }
+
+        .container-milieu {
+            width:30%;
+            height:10px;
+            border-radius: 10px;
+            background-color: #407a9c;
+        }
+    }
+
+    .liste-amis {
+        .display(flex);
+        .justify-content(space-around);
+        .flex-wrap(wrap);
+
+        .bloc-amis {
+            margin:20px;
+        }
+
+
+        .avatar-amis {
+            .size(100px);
+            background-color: #222223;
+            border:2px solid #86ad37;
+            border-radius: 5px;
+        }
+
+        .pseudo-amis {
+            color:white;
+            .font-size(1rem);
+            text-align: center;
+            margin-top:5px;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+.fontFace (@fontname, @fontfile, @fontweight: normal, @fontstyle: normal) {
+
+  @font-face {
+	font-family: @fontname;
+
+	src: url('../fonts/@{fontfile}.ttf') format('truetype');
+
+	font-weight: @fontweight; font-style: @fontstyle;
+
+  }
+
+}
+
+@font-face {
+    font-family: "Roboto-Light";
+    src: url("../fonts/Roboto-Light.ttf");
+}

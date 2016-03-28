@@ -21,6 +21,11 @@ export class httpService {
 		.map(response => response.json());
 	}
 
+	GetPlayerAchievements(id, apiKey, appId) {
+	return this.http.get('http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v0001/?appid=' + appId + '&key=' + apiKey + '&steamid=' + id + '&l=french')
+		.map(response => response.json());
+	}
+
 
 
 

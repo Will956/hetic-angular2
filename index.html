@@ -1,6 +1,9 @@
-<html>
-  <head>
-    <title>Angular 2 QuickStart</title>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <title>Steam comparateur</title>
     <!-- 1. Load libraries -->
     <!-- IE required polyfills, in this exact order -->
     <script src="node_modules/es6-shim/es6-shim.min.js"></script>
@@ -10,24 +13,46 @@
     <script src="node_modules/rxjs/bundles/Rx.js"></script>
     <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
     <script src="node_modules/angular2/bundles/http.dev.js"></script>
+    <script src="node_modules/angular2/bundles/router.dev.js"></script>
     <script src="node_modules/underscore/underscore.js"></script>
     <link rel="stylesheet" href="dist/css/style.css">
-    <!-- 2. Configure SystemJS -->
+    <link rel="stylesheet/less" type="text/css" href="app/less/style.less" />
     <script>
-      System.config({
+    less = {
+        env: "development",
+    };
+
+    System.config({
         packages: {
-          dist: {
-            format: 'register',
-            defaultExtension: 'js'
-          }
+            dist: {
+                format: 'register',
+                defaultExtension: 'js'
+            }
         }
-      });
-      System.import('dist/boot')
-            .then(null, console.error.bind(console));
+    });
+    System.import('dist/boot')
+    .then(null, console.error.bind(console));
     </script>
-  </head>
-  <!-- 3. Display the application -->
-  <body>
-    <my-app>Loading...</my-app>
-  </body>
+    <script src="app/js/less.js" type="text/javascript"></script>
+</head>
+<body>
+  <header>
+    <div>
+      <a href="index.html">Accueil</a>
+    </div> 
+    <div>
+      <a href="index.html"><img src="app/img/home.png"/></a>
+    </div> 
+    <div>
+      SteamChallenge
+    </div>
+    <div>
+      <a href="faq.html"><img src="app/img/circle.png"/></a>
+    </div>  
+    <div>
+      <a href="faq.html">FAQ</a>
+    </div> 
+  </header>
+  <steam-app></steam-app>
+</body>
 </html>

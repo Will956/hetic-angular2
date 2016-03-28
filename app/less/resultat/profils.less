@@ -1,0 +1,106 @@
+.container-profil {  
+    width:90%;
+    margin:auto;
+    display: flex;
+    justify-content:space-around;
+    
+    .profil-gauche {
+    height:150px;
+    margin-top:80px;
+    display: flex;
+        .avatar {
+            
+            .size(150px);
+            background-color: blue;
+            float:left;
+            border-radius: 5px;
+            background-image: url("../img/avatar.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+    }
+
+    #versus {
+        margin-top:80px;
+        .font-size(2.5rem);
+        color:white;
+        line-height: 150px;
+    }
+
+
+    .informations {
+        width:300px;
+        .pseudo {
+            color:white;
+            .font-size(2rem);
+            text-align: left;
+            margin-left:10px;
+        }
+
+        .lieu {
+            margin-left:10px;
+            margin-top:10px;
+            color:#898989;
+            .font-size(1rem);
+
+            img {
+                margin-right: 10px;
+            }
+        }
+
+        .container-niveau {
+            .display(flex);
+
+            .bloc-niveau {
+                width:40%;
+                color:white;
+                .font-size(1.25rem);
+
+                .niveau {
+                    margin-top:20px;
+                    margin-left:25px;
+                }
+
+                .badge-niveau {
+                    margin-top:5px;
+                    margin-left:35px;
+                    .size(40px);
+                    border: 2px solid #542437;
+                    text-align: center;
+                    border-radius: 50%;
+                    line-height: 35px;
+                }
+            }
+
+            .bloc-badge {
+                margin-top:15px;
+                background:#222223;
+                width:55%;
+                height:80px;
+
+                img{
+                    .size(60px);
+                    margin-top:10px;
+                    margin-left: 10px;
+                    float: left;
+                }
+
+                .nom-badge {
+                    color:white;
+                    .font-size(1.125rem);
+                    margin-left: 70px;
+                    margin-top:15px;
+                    text-align: center;
+                }
+
+                .xp-badge {
+                    color:#898989;
+                    margin-left: 70px; 
+                    text-align: center;
+                    margin-top:5px;
+                }
+            }
+        }
+    }
+}

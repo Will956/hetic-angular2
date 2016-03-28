@@ -1,3 +1,35 @@
-// External
-//@import (inline) 'ext/reset.css';
-@import 'ext/lesshat';
+// ====== IMPORT LIBRAIRIE  ========
+
+@import "ext/lesshat.less";
+@import "ext/remixins.less";
+
+@base-font-size-px:16;
+
+
+// ====== IMPORT CSS  ========
+@import "conf/reset.css";
+@import "conf/interface";
+@import "conf/fonts";
+@import "conf/colors";
+@import "conf/layout";
+@import "conf/mediaqueries";
+
+
+// ====== HEADER  ========
+
+@import 'header/header';
+
+// ====== FOOTER ========
+
+@import 'footer/footer';
+
+// ====== CONF ========
+
+@import 'corps/corps';
+
+// ====== RESULTAT ========
+
+@import 'resultat/profils';
+@import 'resultat/amis';
+@import 'resultat/succes';
+@import 'resultat/jeux';
