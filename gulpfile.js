@@ -16,7 +16,8 @@ var staticFiles = [
   appFolder + '**/*.eot',
   appFolder + '**/*.svg',
   appFolder + '**/*.ttf',
-  appFolder + '**/conf/*.css'
+  appFolder + '**/conf/*.css',
+  appFolder + '**/*.js'
 ];
 
 gulp.task('less', function () {
