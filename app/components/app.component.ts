@@ -1,7 +1,7 @@
 import {Component, View} from 'angular2/core';
 import {httpService} from '../services/http.service';
 import {Observable} from 'rxjs/Rx';
-import _ from '../underscore';
+import _ from 'underscore';
 
 @Component({
     selector: 'steam-app'
