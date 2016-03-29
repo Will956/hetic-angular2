@@ -1,6 +1,7 @@
 import {Component, View} from 'angular2/core';
 import {httpService} from '../services/http.service';
 import {Observable} from 'rxjs/Rx';
+import * as _ from 'underscore';
 
 @Component({
     selector: 'steam-app'
@@ -9,10 +10,10 @@ import {Observable} from 'rxjs/Rx';
 	templateUrl: 'app/templates/home.html'
 })
 export class AppComponent {
-	public msg = 'Request result';
+	public msg: string = 'Request result';
 	public datas_error: Boolean = false;
-	public show_datas = false;
-	public apiKey;
+	public show_datas: Boolean = false;
+	public apiKey:string;
 	public player1;
 	public player2;
 	public player1Friends;
@@ -38,6 +39,7 @@ export class AppComponent {
 
 	compare(first_id, second_id) {
 		this.show_datas = true;
+
 		// Get Player Summaries
 		Observable.forkJoin(
 			this._httpService.getPlayerSummaries(first_id, this.apiKey),
@@ -96,7 +98,6 @@ export class AppComponent {
 			},
 			err => console.error(err)
 		);
-
 
 		// Get Owned Games
 		Observable.forkJoin(

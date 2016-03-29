@@ -16,7 +16,6 @@
     <script src="node_modules/angular2/bundles/router.dev.js"></script>
     <script src="node_modules/underscore/underscore.js"></script>
     <link rel="stylesheet" href="dist/css/style.css">
-    <link rel="stylesheet/less" type="text/css" href="app/less/style.less" />
     <script>
     less = {
         env: "development",
@@ -28,6 +27,9 @@
                 format: 'register',
                 defaultExtension: 'js'
             }
+        }, 
+        paths: {
+        underscore: './node_modules/underscore/underscore.js'
         }
     });
     System.import('dist/boot')
