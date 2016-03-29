@@ -1,156 +1,94 @@
 <section id="corps">
-    <p id="faq">Avec SteamChallenge vous pouvez comparez 2 profils Steam visibles publiquement et savoir vos points communs et différences.<br><br>
-    <span>http://steamcommunity.com/id/xxxxxxxx ou xxxxxxxx<br>
-    http://steamcommunity.com/profiles/7656119xxxxxxxxxx OR 7656119xxxxxxxxxx<br>
-    STEAM_0:X:XXXXXX</span>
-    </p>
+    <p id="faq">Avec SteamChallenge vous pouvez comparez 2 profils Steam visibles publiquement et savoir vos points communs et différences.</p>
     <form action="" method="post" id="form1"> 
-      <div>     
-      <p>Joueur 1</p>
-      <input type="text" #first_id value="76561198102993709">
-      </div>
-      <p>Vs</p>
-      <div>
-      <p>Joueur 2</p>
-      <input type="text" #second_id value="76561197960435530">
-    </div>
+        <div>     
+            <p>Joueur 1</p>
+            <input type="text" #first_id value="76561197998645424">
+            </div>
+            <p>Vs</p>
+            <div>
+            <p>Joueur 2</p>
+            <input type="text" #second_id value="76561198151624530">
+        </div>
     </form>
     <div id="button" type="submit" form="form1" (click)="compare(first_id.value, second_id.value)" value="Comparer">Comparer</div>
     <div *ngIf="datas_error">Une erreur est survenue!</div>
 
-
     <section *ngIf="show_datas" class="container-profil">
-    <div *ngFor="#player of player1">
-      <div class="profil-gauche">
-        <div class="avatar"><img src="{{player.avatarfull}}" width="150" height="150"></div>
-        <div class="informations">
-          <div class="pseudo">{{player.personaname}}</div>
+        <div *ngFor="#player of player1">
+            <div class="profil-gauche">
+                <div class="avatar"><img src="{{player.avatarfull}}" width="150" height="150"></div>
+                <div class="informations">
+                    <div class="pseudo">{{player.personaname}}</div>
+                </div>
+            </div>
         </div>
-    </div>
 
-      </div>
+        <p id="versus">Vs</p>
 
-      <p id="versus">Vs</p>
-
-    <div *ngFor="#player of player2">
-      <div class="profil-gauche">
-        <div class="informations">
-          <div class="pseudo">{{player.personaname}}</div>
+        <div *ngFor="#player of player2">
+            <div class="profil-gauche">
+                <div class="informations">
+                <div class="pseudo">{{player.personaname}}</div>
+                </div>
+                <div class="avatar"><img src="{{player.avatarfull}}" width="150" height="150"></div>
+            </div>
         </div>
-        <div class="avatar"><img src="{{player.avatarfull}}" width="150" height="150"></div>
-    </div>
-
-      </div>
     </section>
 
     <section *ngIf="show_datas" class="container-amis">
-  <div class="titre">
-  <img src="app/img/people-white.png" alt="amis"/>
-  <p>Amis</p>
-  </div>
-
-  <div class="trait"></div>
-
-  <div class="container-resultat">
-    <div class="container-gauche">
-      <div>Totalité : <span class="grey">{{player1FriendsTotal}}</span></div>
-    </div>
-
-    <div class="container-milieu">
-      <div>En communs : <span class="grey">{{sameFriendsTotal}} amis</span></div>
-    </div>
-
-    <div class="container-droite">
-      <div>Totalité : <span class="grey">{{player2FriendsTotal}}</span></div>
-    </div>
-  </div>
-
-  <div class="container-resultat-nav">
-    <div class="container-gauche"></div>
-    <div class="container-milieu"></div>
-    <div class="container-droite"></div>
-  </div>
-
-  <div class="liste-amis">
-    <div  *ngFor="#friend of sameFriends" class="bloc-amis">
-      <div class="avatar-amis"><img src="{{friend.avatarfull}}" width="95" height="95"></div>
-      <div class="pseudo-amis">{{friend.name}}</div>
-    </div>
-  </div>
-</section>
-
-
-<!-- <section class="container-succes">
-  <div class="titre">
-  <img src="app/img/cup.png" alt="amis"/>
-  <p>Succès</p>
-  </div>
-
-  <div class="trait"></div>
-
-  <div class="texte">En communs : <span class="grey">{{sameAchievementsTotal}} succès</span></div>
-
-  <div class="liste-succes">
-   <div class="bloc-succes">
-      <div class="avatar-succes"></div>
-      <div class="titre-succes"> Titre</div>
-    </div>
-
-   <div class="bloc-succes">
-      <div class="avatar-succes"></div>
-      <div class="titre-succes"> Titre</div>
-    </div>
-
-   <div class="bloc-succes">
-      <div class="avatar-succes"></div>
-      <div class="titre-succes"> Titre</div>
-    </div>
-
-   <div class="bloc-succes">
-      <div class="avatar-succes"></div>
-      <div class="titre-succes"> Titre</div>
-    </div>
-
-   <div class="bloc-succes">
-      <div class="avatar-succes"></div>
-      <div class="titre-succes"> Titre</div>
-    </div>
-
-   <div class="bloc-succes">
-      <div class="avatar-succes"></div>
-      <div class="titre-succes"> Titre</div>
-    </div>
-
-   <div class="bloc-succes">
-      <div class="avatar-succes"></div>
-      <div class="titre-succes"> Titre</div>
-    </div>
-
-   <div class="bloc-succes">
-      <div class="avatar-succes"></div>
-      <div class="titre-succes"> Titre</div>
-    </div>
-  </div>
-</section> -->
-
-<section *ngIf="show_datas" class="container-jeux">
-  <div class="titre">
-  <img src="app/img/jeux.png" alt="jeux"/>
-  <p>Jeux</p>
-  </div>
-
-  <div class="trait"></div>
-
-  <div class="texte">En communs : <span class="grey">{{sameGamesTotal}} jeux</span></div>
-
-  <div class="liste-jeux">
-    <div *ngFor="#game of sameGames" class="bloc-jeux">
-        <div class="avatar-jeux">
-            <img src="http://media.steampowered.com/steamcommunity/public/images/apps/{{game.appid}}/{{game.img_logo_url}}.jpg" width="250" height="100">
+        <div class="titre">
+            <img src="app/img/people-white.png" alt="amis"/>
+            <p>Amis</p>
         </div>
-      <div class="titre-jeux">{{game.name}}
-      </div>
-    </div>
-  </div>
-</section>
+
+        <div class="trait"></div>
+
+        <div class="container-resultat">
+            <div class="container-gauche">
+                <div>Totalité : <span class="grey">{{player1FriendsTotal}}</span></div>
+            </div>
+
+            <div class="container-milieu">
+                <div>En communs : <span class="grey">{{sameFriendsTotal}} amis</span></div>
+            </div>
+
+            <div class="container-droite">
+                <div>Totalité : <span class="grey">{{player2FriendsTotal}}</span></div>
+            </div>
+        </div>
+
+        <div class="container-resultat-nav">
+            <div class="container-gauche"></div>
+            <div class="container-milieu"></div>
+            <div class="container-droite"></div>
+        </div>
+
+        <div class="liste-amis">
+            <div  *ngFor="#friend of sameFriends" class="bloc-amis">
+                <div class="avatar-amis"><img src="{{friend.avatarfull}}" width="95" height="95"></div>
+                <div class="pseudo-amis">{{friend.name}}</div>
+            </div>
+        </div>
+    </section>
+
+
+    <section *ngIf="show_datas" class="container-jeux">
+        <div class="titre">
+            <img src="app/img/jeux.png" alt="jeux"/>
+            <p>Jeux</p>
+        </div>
+        <div class="trait"></div>
+        <div class="texte">En communs : <span class="grey">{{sameGamesTotal}} jeux</span></div>
+
+        <div class="liste-jeux">
+            <div *ngFor="#game of sameGames" class="bloc-jeux">
+                <div class="avatar-jeux">
+                    <img src="http://media.steampowered.com/steamcommunity/public/images/apps/{{game.appid}}/{{game.img_logo_url}}.jpg" width="250" height="100">
+                </div>
+                <div class="titre-jeux">{{game.name}}</div>
+            </div>
+        </div>
+    </section>
+
 </section>

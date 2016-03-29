@@ -1,7 +1,7 @@
 import {Component, View} from 'angular2/core';
 import {httpService} from '../services/http.service';
 import {Observable} from 'rxjs/Rx';
-import * as _ from 'underscore';
+import _ from 'underscore';
 
 @Component({
     selector: 'steam-app'
@@ -10,34 +10,33 @@ import * as _ from 'underscore';
 	templateUrl: 'app/templates/home.html'
 })
 export class AppComponent {
-	public msg: string = 'Request result';
 	public datas_error: Boolean = false;
 	public show_datas: Boolean = false;
 	public apiKey: string;
-	public player1: Array[];
-	public player2: string;
-	public player1Friends;
-	public player2Friends;
-	public player1FriendsTotal;
-	public player2FriendsTotal;
-	public player1Games;
-	public player2Games;
-	public player1GamesTotal;
-	public player2GamesTotal;
-	public sameFriends = [];
-	public sameFriendsTotal;
-	public sameGames = [];
-	public sameGamesTotal;
-	public player1Achivements = [];
-	public player2Achivements = [];
-	public sameAchievements = [];
-	public sameAchievementsTotal;
+	public player1: Array<Object>;
+	public player2: Array<Object>;
+	public player1Friends: Array<Object>;
+	public player2Friends: Array<Object>;
+	public player1FriendsTotal: number;
+	public player2FriendsTotal: number;
+	public player1Games: Array<Object>;
+	public player2Games: Array<Object>;
+	public player1GamesTotal: number;
+	public player2GamesTotal: number;
+	public sameFriends: Array<Object> = [];
+	public sameFriendsTotal: number;
+	public sameGames: Array<Object> = [];
+	public sameGamesTotal: number;
+	public player1Achivements: Array<Object> = [];
+	public player2Achivements: Array<Object> = [];
+	public sameAchievements: Array<Object> = [];
+	public sameAchievementsTotal: number;
 
 	constructor(private _httpService: httpService) {
 		this.apiKey = '385FE91CF75CF3037427EBB2CE96D5BF';
 	}
 
-	compare(first_id, second_id) {
+	compare(first_id: number, second_id: number) {
 		this.show_datas = true;
 
 		// Get Player Summaries
@@ -52,14 +51,14 @@ export class AppComponent {
 			err => console.error(err)
 		);
 
-		//  Get Frield List
+		//  Get Friend List
 		Observable.forkJoin(
 			this._httpService.getFriendList(first_id, this.apiKey),
 			this._httpService.getFriendList(second_id, this.apiKey)
 		).subscribe(
 			data => {
-				var friendPlayer1 = [];
-				var friendPlayer2 = [];
+				var friendPlayer1: Array<number> = [];
+				var friendPlayer2: Array<number> = [];
 				var self = this;
 
 				this.player1Friends = data[0].friendslist.friends;
@@ -73,7 +72,7 @@ export class AppComponent {
 					friendPlayer2.push(friend.steamid);
 				});
 
-				var intersection = _.intersection(friendPlayer1, friendPlayer2);
+				var intersection: Array<Object> = _.intersection(friendPlayer1, friendPlayer2);
 
 				_.each(intersection, function(steamid) {
 					self.sameFriends.push(_.find(self.player1Friends, function(friend) {
@@ -105,10 +104,8 @@ export class AppComponent {
 			this._httpService.getOwnedGames(second_id, this.apiKey)
 		).subscribe(
 			data => {
-				var tabPlayer1 = [];
-				var tabPlayer2 = [];
-				var tabAchiev1 = [];
-				var tabAchiev2 = [];
+				var tabPlayer1: Array<string> = [];
+				var tabPlayer2: Array<string> = [];
 				var self = this;
 
 				this.player1Games = data[0].response.games;
@@ -116,50 +113,13 @@ export class AppComponent {
 
 				_.each(this.player1Games, function(game) {
 					tabPlayer1.push(game.name);
-					self._httpService.GetPlayerAchievements(first_id, self.apiKey, game.appid)
-						.subscribe(
-							data => {
-								_.each(data.playerstats.achievements, function(achievement) {
-									if(achievement.achieved === 1) {
-										self.player1Achivements.push(achievement);
-									}
-								});
-							},
-							err => {}
-							);
 				});
 
 				_.each(this.player2Games, function(game) {
 					tabPlayer2.push(game.name);
-					self._httpService.GetPlayerAchievements(second_id, self.apiKey, game.appid)
-						.subscribe(
-							data => {
-								_.each(data.playerstats.achievements, function(achievement) {
-									if(achievement.achieved === 1) {
-										self.player2Achivements.push(achievement);
-									}
-								});
-							},
-							err => {}
-							);
 				});
 
-				_.each(this.player1Achivements, function(achievement) {
-					tabAchiev1.push(achievement.apiname);
-				});
-				_.each(this.player2Achivements, function(achievement) {
-					tabAchiev2.push(achievement.apiname);
-				});
-
-				var interAchiev = _.intersection(tabAchiev1, tabAchiev2);
-
-				_.each(interAchiev, function(apiname) {
-					self.sameAchievements.push(_.find(self.player1Achivements, function(achievement) {
-						return achievement.apiname === apiname;
-					}));
-				});
-
-				var intersection = _.intersection(tabPlayer1, tabPlayer2);
+				var intersection: Array<Object> = _.intersection(tabPlayer1, tabPlayer2);
 
 				_.each(intersection, function(name) {
 					self.sameGames.push(_.find(self.player1Games, function(game) {
@@ -168,10 +128,6 @@ export class AppComponent {
 				});
 
 				this.sameGamesTotal = this.sameGames.length;
-				this.sameAchievementsTotal = this.sameAchievements.length;
-
-				console.log(this.sameAchievements);
-
 				this.player1GamesTotal = data[0].response.game_count;
 				this.player2GamesTotal = data[1].response.game_count;
 			},
