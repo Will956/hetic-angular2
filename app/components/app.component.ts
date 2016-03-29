@@ -13,9 +13,9 @@ export class AppComponent {
 	public msg: string = 'Request result';
 	public datas_error: Boolean = false;
 	public show_datas: Boolean = false;
-	public apiKey:string;
-	public player1;
-	public player2;
+	public apiKey: string;
+	public player1: Array[];
+	public player2: string;
 	public player1Friends;
 	public player2Friends;
 	public player1FriendsTotal;
