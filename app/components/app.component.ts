@@ -1,7 +1,7 @@
 import {Component, View} from 'angular2/core';
 import {httpService} from '../services/http.service';
 import {Observable} from 'rxjs/Rx';
-import _ from 'underscore';
+import _ from '../underscore';
 
 @Component({
     selector: 'steam-app'
@@ -27,10 +27,9 @@ export class AppComponent {
 	public sameFriendsTotal: number;
 	public sameGames: Array<Object> = [];
 	public sameGamesTotal: number;
-	public player1Achivements: Array<Object> = [];
-	public player2Achivements: Array<Object> = [];
 	public sameAchievements: Array<Object> = [];
 	public sameAchievementsTotal: number;
+	public pointPlayers: number = 0;
 
 	constructor(private _httpService: httpService) {
 		this.apiKey = '385FE91CF75CF3037427EBB2CE96D5BF';
@@ -59,6 +58,7 @@ export class AppComponent {
 			data => {
 				var friendPlayer1: Array<number> = [];
 				var friendPlayer2: Array<number> = [];
+				var points: number;
 				var self = this;
 
 				this.player1Friends = data[0].friendslist.friends;
@@ -81,6 +81,9 @@ export class AppComponent {
 				});
 
 				this.sameFriendsTotal = this.sameFriends.length;
+
+				points = Math.floor(this.sameFriendsTotal/15);
+				this.pointPlayers += points*10;
 
 				_.each(this.sameFriends, function(friend){
 					self._httpService.getPlayerSummaries(friend.steamid, self.apiKey).subscribe(
@@ -128,6 +131,8 @@ export class AppComponent {
 				});
 
 				this.sameGamesTotal = this.sameGames.length;
+				this.pointPlayers += this.sameGamesTotal;
+
 				this.player1GamesTotal = data[0].response.game_count;
 				this.player2GamesTotal = data[1].response.game_count;
 			},
