@@ -35,8 +35,9 @@
                 <div class="avatar"><img src="{{player.avatarfull}}" width="150" height="150"></div>
             </div>
         </div>
-        <div>{{pointPlayers}}/100</div>
     </section>
+
+    <div *ngIf="show_datas" id="note">Note de proximitié : {{pointPlayers}}/100</div>
 
     <section *ngIf="show_datas" class="container-amis">
         <div class="titre">
