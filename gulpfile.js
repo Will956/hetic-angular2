@@ -13,6 +13,10 @@ var staticFiles = [
   appFolder + '**/*.html',
   appFolder + '**/*.jpg',
   appFolder + '**/*.png',
+  appFolder + '**/*.eot',
+  appFolder + '**/*.svg',
+  appFolder + '**/*.ttf',
+  appFolder + '**/conf/*.css'
 ];
 
 gulp.task('less', function () {
