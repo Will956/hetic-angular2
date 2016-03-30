@@ -17,8 +17,8 @@ export class AppComponent {
 	public player2: Array<Object>;
 	public player1Friends: Array<Object>;
 	public player2Friends: Array<Object>;
-	public player1FriendsTotal: number;
-	public player2FriendsTotal: number;
+	public player1FriendsTotal: number = 0;
+	public player2FriendsTotal: number = 0;
 	public player1Games: Array<Object>;
 	public player2Games: Array<Object>;
 	public player1GamesTotal: number;
@@ -37,6 +37,13 @@ export class AppComponent {
 
 	compare(first_id: number, second_id: number) {
 		this.show_datas = true;
+		this.player1Friends = 0;
+		this.player2Friends = 0;
+		this.sameGames = [];
+		this.sameGamesTotal = 0;
+		this.sameFriends = [];
+		this.sameFriendsTotal = 0;
+		this.pointPlayers = 0;
 
 		// Get Player Summaries
 		Observable.forkJoin(
